@@ -18,7 +18,7 @@ A dynamic, interactive **movie discovery and recommendation platform** built wit
 
 - **Frontend**: React.js
 - **API**: The Movie Database (TMDB) API
-- **Styling**: CSS Grid, Flexbox, Transitions
+- **Styling**: CSS
 - **Tools**: Vite, React
 
 ## 📦 Installation
