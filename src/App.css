@@ -5,14 +5,31 @@
   text-align: center;
 }
 
+:root {
+  --color-primary: #1e2538;
+  --color-accent: #555555;
+  --color-secondary: #21d07a;
+--color-bg: linear-gradient(180deg, #23272f 0%, #1e1e1e 100%);
+  --color-card: #23272f;
+  --color-text: #ffffff;
+  --color-muted: #b3b3b3;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--color-text);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+  text-shadow: 0 0 1px var(--color-accent), 0 0 2px var(--color-accent), 0 0 3px var(--color-accent);
+}
+
 body {
   margin: 0;
-  background-color:rgba(0, 0, 0, 0.816);
-  color: white;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
 }
 
 .title-banner {
-  background-color: #2c2c2c; /* Dark grey */
+  background: linear-gradient(90deg, #23272f 60%, #1e2538 100%);
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -51,17 +68,18 @@ body {
 }
 
 .movie-card {
-  background-color: #1e1e1e;
-  border-radius: 10px;
   padding: 10px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  background: var(--color-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 37, 56, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .movie-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(180, 176, 176, 0.2);
 }
 
 .movie-card img {

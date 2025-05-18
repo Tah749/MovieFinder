@@ -1,27 +1,11 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import MovieDetails from './MovieDetails'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
   const [movies, setMovies] = useState([]);
-
-  /*useEffect(() => {
-    const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjYwYmI5YmIwYzVlMDNkMDgyMGM5NWRhZTQ3YzUwNCIsIm5iZiI6MTc0NzUyMzI3Mi4xMDA5OTk4LCJzdWIiOiI2ODI5MTZjODQzZDdlMGMwYmMyZjZjNjQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.HwbzLlvJeHQwMDWt0BsByYofCHCi8pzrZgVFlpFQt5o'
-      }
-    };
-    
-    fetch(url, options)
-      .then(res => res.json())
-      .then(json => console.log(json))
-      .catch(err => console.error(err));
-  })*/
 
     useEffect(() => {
     const fetchPopularMovies = async () => {
@@ -30,7 +14,7 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjYwYmI5YmIwYzVlMDNkMDgyMGM5NWRhZTQ3YzUwNCIsIm5iZiI6MTc0NzUyMzI3Mi4xMDA5OTk4LCJzdWIiOiI2ODI5MTZjODQzZDdlMGMwYmMyZjZjNjQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.HwbzLlvJeHQwMDWt0BsByYofCHCi8pzrZgVFlpFQt5o'
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`
       }
     };
       try {
@@ -48,28 +32,46 @@ function App() {
 
     fetchPopularMovies();
   }, []);
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="title-banner">
         <h1 className="title">Movie Finder</h1>
       </div>
+      <Routes>
+        <Route path='/' element={
       <div className="page-content"> 
         <h2 id="welcome-text">Welcome to Movie Finder</h2>
+        <br/>
+        <br/>
+        <br/>
+
+        <h2 id="popular-movies">Popular Movies</h2>
+        <h3 id="popular-movies-text">Click on a movie to see more details</h3>
+
 
 
         <div className="movie-grid">
           {movies.map(movie => (
-            <div className="movie-card" key={movie.id} onClick={() => null}>
+            <div className="movie-card" 
+            key={movie.id} 
+            onClick={() => navigate(`/movie/${movie.id}`)}
+            >
               <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                 alt={movie.title}
               />
               <p>{movie.title}</p>
             </div>
           ))}
         </div>
-
       </div>
+        } />
+        <Route path='/movie/:id' element={<MovieDetails />} />
+      <Route path='/movie/:id' element={<MovieDetails />} />
+      </Routes>
     </>
   )
 }
