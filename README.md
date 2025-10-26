@@ -1,3 +1,5 @@
+**In Development**
+
 # 🎬 Movie Finder App
 
 A dynamic, interactive **movie discovery and recommendation platform** built with **React.js**. This website allows users to explore popular movies, receive personalized recommendations, and maintain a watchlist. The app integrates with **The Movie Database (TMDB)** API to provide real-time movie data and recommendations. 
